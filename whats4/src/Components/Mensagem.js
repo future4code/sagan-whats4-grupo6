@@ -6,37 +6,48 @@ import styled from 'styled-components'
 
 const Main = styled.div`
     border: 1px solid black;
-    width: 60%;
+    width: 70%;
     height: 100vh;
     margin: auto;
     display:flex;
     flex-direction: column-reverse;
-    
+    background-color: #e5dcd5;
 `
 const LogContainer = styled.div`
     margin: 10px;
-
 `
 
 const EntradaDeMensagem = styled.input`
-    width: 70%;
+    width: 60%;
+    border-radius: 5px;
 `
 
 const EntradaDeNome = styled.input`
     width: 20%;
+    border-radius: 5px;
 `
 
 const Botao = styled.button`
-
+    border-radius: 5px;
+    font-weight: bold;
 `
 
 const ContainerEntrada = styled.div`
-    
     width: 100%;
-   
+    height: 5%;
     display: flex;
     flex-direction: row;
-    
+    justify-content: space-evenly;
+    padding-bottom: 10px;
+`
+const ParagrafoPost = styled.p`
+    padding: 10px 15px;
+    max-width: 45%;
+    background-color: white;
+    display:flex;
+    flex-direction:column;
+    border-radius: 5px;
+
 `
 
 class Mensagem extends React.Component {
@@ -90,30 +101,34 @@ class Mensagem extends React.Component {
         return (
 
             <Main>
-               
+
                 <ContainerEntrada>
-                    
-                        <EntradaDeNome
-                            type="text"
-                            className="nome-usuario"
-                            placeholder="Nome"
-                            onChange={this.onChangeInputUsuario}
-                        />
-                        <EntradaDeMensagem
-                            type="text"
-                            className="mensagem"
-                            onChange={this.onChangeInputMensagem}
-                            placeholder="Mensagem"
-                            value={this.state.mensagem}
-                        />
-                        <Botao
-                            className="enviar"
-                            onClick={this.onClickEnviar}>Enviar
+
+                    <EntradaDeNome
+                        type="text"
+                        className="nome-usuario"
+                        placeholder="Nome"
+                        onChange={this.onChangeInputUsuario}
+                    />
+                    <EntradaDeMensagem
+                        type="text"
+                        className="mensagem"
+                        onChange={this.onChangeInputMensagem}
+                        placeholder="Mensagem"
+                        value={this.state.mensagem}
+                    />
+                    <Botao
+                        className="enviar"
+                        onClick={this.onClickEnviar}>Enviar
                         </Botao>
 
                 </ContainerEntrada>
                 <LogContainer>
-                    {this.state.log.map((mensagem) => <p><strong>{mensagem.usuario}:</strong> {mensagem.mensagem}</p>)}
+                    {this.state.log.map((mensagem) =>
+                        <ParagrafoPost>
+                            <strong>{mensagem.usuario}</strong>  {mensagem.mensagem}
+                        </ParagrafoPost>
+                    )}
                 </LogContainer>
 
             </Main>
