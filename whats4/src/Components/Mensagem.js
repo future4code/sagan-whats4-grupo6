@@ -81,6 +81,15 @@ class Mensagem extends React.Component {
             mensagem: ""
         })
     }
+    aoApertarEnter = event => {
+        const code = event.which;
+        if (code === 13) {
+            this.onClickEnviar();
+        }
+    }
+
+
+
 
     logMensagem = () => {
         const newLog = {
@@ -116,6 +125,8 @@ class Mensagem extends React.Component {
                         onChange={this.onChangeInputMensagem}
                         placeholder="Mensagem"
                         value={this.state.mensagem}
+                        onKeyPress={this.aoApertarEnter}
+
                     />
                     <Botao
                         className="enviar"
